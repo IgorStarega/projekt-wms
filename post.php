@@ -16,6 +16,12 @@ include_once('database.php');
     printNavbar();
     ?>
     <main class="container mt-5">
+        <h2><?=$post['title']?></h2>
+        <h4 class="text-muted"><?=$post['categoryName']?></h4>
+        <h6 class="text-muted"><?=$post['firstName']?> <?=$post['lastName']?>, <?=$post['createdAt']?></h6>
+        <p>
+            <?=$post['content']?>
+        </p>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
