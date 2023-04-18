@@ -10,3 +10,12 @@ function getConnection() {
     }
     return $connection;
 }
+
+function getAllPosts() {
+    $connection = getConnection();
+    $sql = 'select posts.id AS id,posts.title,categories AS category';
+    $result = $connection->query($sql);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $connection->close();
+    return $rows;
+}
