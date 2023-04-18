@@ -25,7 +25,7 @@ include_once('database.php');
             <?php
         } else {
             foreach($posts as $a){
-                
+
             }
         }
     </main>
