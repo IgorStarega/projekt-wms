@@ -25,9 +25,18 @@ include_once('database.php');
             <?php
         } else {
             foreach($posts as $a){
-
+                ?>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><?=$a['title']?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><?=$a['categoryName']?></h6>
+                        <p class="card-link"><a href="post.php?id=<?=$a['id']?>" target="-blank">Więcej</a></p>
+                    </div>
+                </div>
+                <?php
             }
         }
+        ?>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
