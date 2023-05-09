@@ -3,7 +3,7 @@ include('config.php');
 function printNavbar() {
     global $nrSpotkania, $title;
     ?>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><?=$title?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
@@ -14,6 +14,7 @@ function printNavbar() {
             <li class="nav-item">
             <a class="nav-link" aria-current="page" href="index.php">Strona Główna</a></li>
             <a class="nav-link" aria-current="page" href="posts.php">Posty</a></li>
+            <a class="nav-link" aria-current="page" href="contact.php">Kontakt</a></li>
             <a class="nav-link" aria-current="page" href="admin-posts.php">Zarządzanie - Posty</a></li>
         </ul>
         </div>
@@ -40,7 +41,7 @@ function printSelect($name, $displayName, $array){
 function printTextarea($name, $displayName){
     ?>
     <div class="form-group">
-        <label class="form-labael" for="<?=$name?>"><?=$name?></label>
+        <label class="form-label" for="<?=$name?>"><?=$displayName?></label>
         <textarea class="form-control" name="<?=$name?>" id="<?=$name?>"></textarea>
     </div>
     <?php

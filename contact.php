@@ -1,8 +1,7 @@
 <?php
 include_once('functions.php');
 include_once('database.php');
-$categories = getAllCategories();
-addPost();
+addMessage();
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -10,7 +9,7 @@ addPost();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$title?></title>
+    <title><?=$title?> - kontakt</title>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
 </head>
 <body>
@@ -18,13 +17,24 @@ addPost();
     printNavbar();
     ?>
     <main class="container mt-5">
-        <h2>Nowy post</h2>
+        <h2>Kontakt</h2>
         <form method="post">
-            <?=printFormField('title','Tytuł','text')?>
-            <?=printSelect('categoryId','Kategoria',$categories)?>
+            <?=printFormField('email','E-mail','email')?>
+            <?=printFormField('firstName','Imię','text')?>
+            <?=printFormField('lastName','Nazwisko','text')?>
             <?=printTextarea('content','Treść')?>
-            <input type="submit" class="btn btn-outline-primary" value="Dodaj!">
+            <input type="submit" class="btn btn-outline-primary" value="Wyślij wiadomość!">
         </form>
+
+        <?php
+        if(isset($_GET['succeeded']) && $_GET['succeeded']) {
+            ?>
+            <div class="alert alert-info">
+                wiadomość wysłana pomyślnie!
+            </div>
+            <?php
+        }
+        ?>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>

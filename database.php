@@ -13,7 +13,7 @@ function getConnection() {
 
 function getAllPosts() {
     $connection = getConnection();
-    $sql = "SELECT posts.id AS id,posts.title,categories AS categoryName FROM posts INNER JOIN categories ON posts.categoryId=categories.id";
+    $sql = "SELECT posts.id AS id,posts.title, categories.name AS categoryName FROM posts INNER JOIN categories ON posts.categoryId=categories.id";
     $result = $connection->query($sql);
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     $connection->close();
@@ -22,7 +22,7 @@ function getAllPosts() {
 
 function getPost($id) {
     $connection = getConnection();
-    $sql = "SELECT posts.id AS id,posts.title AS title,post.content AS content,posts.createdAt AS createdAt,categories.name AS categoryName,admins.firstName AS firstName, admins.lastName AS lastName FROM posts INNER JOIN categories ON posts.categoryId=categories.id INNER JOIN admins ON posts.authoId=admins.id WHERE id = $id";
+    $sql = "SELECT posts.id AS id,posts.title AS title,posts.content AS content,posts.createdAt AS createdAt,categories.name AS categoryName,admins.firstName AS firstName, admins.lastName AS lastName FROM posts INNER JOIN categories ON posts.categoryId=categories.id INNER JOIN admins ON posts.authorId=admins.id WHERE posts.id = $id";
     $result = $connection->query($sql);
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     $connection->close();
@@ -48,8 +48,22 @@ function addPost(){
     $title = $_POST['title'];
     $content = $_POST['content'];
     $connection = getConnection();
-    $sql = "instert into posts(categoryId,authorId,title,content) values('$categoryId','$authorId','$title','$content')";
+    $sql = "insert into posts(categoryId,authorId,title,content) values('$categoryId','$authorId','$title','$content')";
     $connection->query($sql);
     $connection->close();
     header('Location: admin-posts.php');
+}
+
+function addMessage(){
+    $values= ['email','firstName','lastName','content'];
+    if(!isPostValid($values)) return;
+    $email = $_POST['email'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $content = $_POST['content'];
+    $connection = getConnection();
+    $sql = "insert into messages(email,firstName,lastName,content) values('$email','$firstName','$lastName','$content')";
+    $connection->query($sql);
+    $connection->close();
+    header('Location: contact.php?succeeded=1');
 }

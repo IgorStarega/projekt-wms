@@ -1,6 +1,8 @@
 <?php
 include_once('functions.php');
 include_once('database.php');
+$id = $_GET['id'] ?? -1;
+$post = getPost($id);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
