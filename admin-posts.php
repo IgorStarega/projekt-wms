@@ -15,7 +15,18 @@ include_once('functions.php');
     printNavbar();
     ?>
     <main class="container mt-5">
-        <h2>Strona Główna</h2>
+        <h2>Posty</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tytuł</th>
+                    <th>Kategoria</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
