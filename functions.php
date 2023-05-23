@@ -22,7 +22,14 @@ function printNavbar() {
                 ?>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <a class="nav-link" aria-current="page" href="admin-posts.php">Zarządzanie - Posty</a></li>
+                <a class="nav-link" aria-current="page" href="admin-messages.php">Zarządzanie - Wiadomości</a></li>
                 <a class="nav-link" aria-current="page" href="logout.php">Wyloguj</a></li>
+                </ul>
+                <?php
+            } else {
+                ?>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <a class="nav-link" aria-current="page" href="login.php">Zaloguj</a></li>
                 </ul>
                 <?php
             }
